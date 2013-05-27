@@ -1,0 +1,377 @@
+/*************************************************************/
+/************************** VARIABLES **************************/
+/***********************************************************/
+
+$white: #FFFFFF;
+$white_dark: #E7E8E7;
+$black: #000000;
+
+$blue_medium: #516276;
+$blue_dark: #374555;
+
+$orange_light: #ffc741;
+$orange_medium: #f0683e;
+$orange_dark: #eda700;
+
+$grey_ultra_light: #fafafa;
+$grey_light: #d6d6d6;
+$grey_medium: #666666;
+$grey_dark: #999999;
+$grey_ultra_dark: #474747;
+
+
+$padding:14px;
+$url_motif_white:'../images/motif_white.png';
+$url_motif_black:'../images/motif_black.png';
+
+/*************************************************************/
+/************************* MIXINS ***************************/
+/***********************************************************/
+
+@mixin radius ($radius){
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin simple_gradient ($bg_color1, $pourcent1, $bg_color2, $pourcent2){
+    background-color: $bg_color1;
+    background-image: -moz-linear-gradient(top, $bg_color1 $pourcent1, $bg_color2 $pourcent2);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop($pourcent1,$bg_color1), color-stop($pourcent2,$bg_color2));
+    background-image: -webkit-linear-gradient(top, $bg_color1 $pourcent1,$bg_color2 $pourcent2);
+    background-image: -o-linear-gradient(top, $bg_color1 $pourcent1,$bg_color2 $pourcent2);
+    background-image: -ms-linear-gradient(top, $bg_color1 $pourcent1,$bg_color2 $pourcent2);
+    background-image: linear-gradient(to bottom, $bg_color1 $pourcent1,$bg_color2 $pourcent2);
+}
+
+@mixin button ($color, $bg_color1:#FFF, $pourcent1:10%, $bg_color2:#000, $pourcent2:90%){
+    @include simple_gradient($bg_color1, $pourcent1, $bg_color2, $pourcent2);
+    cursor:pointer;
+    color: $color;
+    text-decoration:none;
+    -webkit-box-shadow:rgba(255,255,255,0.5) 0 1px 1px inset,rgba(0,0,0,0.05) 0 1px 0;
+    -moz-box-shadow:rgba(255,255,255,0.5) 0 1px 1px inset,rgba(0,0,0,0.05) 0 1px 0;
+    box-shadow:rgba(255,255,255,0.5) 0 1px 1px inset,rgba(0,0,0,0.05) 0 1px 0;
+    
+    &:hover{
+        text-decoration:none;
+        -webkit-box-shadow:none;
+        -moz-box-shadow:none;
+        box-shadow:none;
+    }
+    &:active{
+        text-decoration:none;
+        @include simple_gradient($bg_color2, $pourcent1, $bg_color1, $pourcent2);
+        -webkit-box-shadow: rgba(0,0,0,0.1) 0 1px 2px inset;
+        -moz-box-shadow: rgba(0,0,0,0.1) 0 1px 2px inset;
+        box-shadow: rgba(0,0,0,0.1) 0 1px 2px inset;
+    }
+}
+
+@mixin box_shadow ($x: 0, $y: 0, $blur: 1px, $color: #000){
+    -webkit-box-shadow: $x $y $blur $color;
+       -moz-box-shadow: $x $y $blur $color;
+            box-shadow: $x $y $blur $color;
+}
+@mixin box_shadow_inset ($x: 0, $y: 1px, $blur: 0, $color: #fff, $inset: inset){
+    -webkit-box-shadow: $x $y $blur $color $inset;
+       -moz-box-shadow: $x $y $blur $color $inset;
+            box-shadow: $x $y $blur $color $inset;
+}
+@mixin box_shadow_rgba ($x: 0, $y: 1px, $blur: 2px, $rgba: rgba(0,0,0,0.1)){
+    -webkit-box-shadow: $x $y $blur $rgba;
+       -moz-box-shadow: $x $y $blur $rgba;
+            box-shadow: $x $y $blur $rgba;
+}
+@mixin box_shadow_inset_rgba ($x: 0, $y: 1px, $blur: 2px, $rgba: rgba(0,0,0,0.1), $inset: inset){
+    -webkit-box-shadow: $x $y $blur $rgba $inset;
+       -moz-box-shadow: $x $y $blur $rgba $inset;
+            box-shadow: $x $y $blur $rgba $inset;
+}
+
+@import 'font-awesome';
+
+@font-face {
+  font-family:'Oswald';
+  src:url('../fonts/Oswald-Light.otf');
+  font-weight:normal;
+  font-style:normal;
+}
+
+/*************************************************************/
+/************************ BODY & CIE ************************/
+/***********************************************************/
+
+body{
+    background-color:$blue_dark;
+    background-image:url($url_motif_black);
+    margin:0;
+    padding:0;
+    font-family:Oswald,Helvetica,Arial,sans-serif;
+    font-size:12px;
+    line-height:18px;
+    color:$grey_medium;
+    
+    figure,img,div,p,a,h1,h2,h3,h4,h5,h6,section,body,html{
+        padding:0;
+        margin:0;
+    }
+
+    #main_container{
+        position:relative;
+        margin:0 auto;
+        
+        h1, h2, h3, h4, h5, h6{
+            padding:0;
+            margin:0;
+        }
+        
+        hr {
+            background-color:$grey_light;
+            width:90%;
+            height:1px;
+            border:none;
+            margin:0 auto;
+        }
+        
+        #header_container{
+            width:100%;
+            height:45px;
+            position:fixed;
+            z-index:10;
+            left:0;
+            top:0;
+            background-color:$white;
+            background-image:url($url_motif_white);
+            
+            #header{
+                height:45px;
+                margin:0 auto;
+                text-align:center;
+                position:relative;
+                    
+                #logo{
+                    display:inline-block;
+                    height:35px;
+                    width:35px;
+                    position:absolute;
+                    top:7px;
+                    right:$padding;
+                    background:url('../images/domi.png');
+                }
+
+                #back{
+                    width:35px;
+                    height:35px;
+                    font-size:25px;
+                    line-height:35px;
+                    display:inline-block;
+                    position:absolute;
+                    left:$padding;
+                    top:7px;
+                    color:$blue_dark;
+                    text-decoration:none;
+                    
+                    &:active{
+                        color:$blue_medium;
+                    }
+                }
+            }
+        }
+
+        #footer_container{
+            width:100%;
+            height:$padding;
+            position:fixed;
+            z-index:10;
+            left:0;
+            bottom:0;
+            background-color:$white;
+            background-image:url($url_motif_white);
+
+            #footer{
+                height:80px;
+                margin:0 auto;
+            }
+        }
+        
+        #view{
+            padding:94px $padding $padding $padding;
+            
+            &.no_padding{
+                padding:45px 0 14px 0;
+            }
+
+            #home{
+                display:inline-block;
+                position:relative;
+                width:100%;
+                
+                .app{
+                    @include simple_gradient($white, 0%, $white_dark, 100%);
+                    background-color:$white_dark;
+                    display:inline-block;
+                    width:86px;
+                    height:84px;
+                    color:$blue_medium;
+                    position:relative;
+                    text-align:center;
+                    font-size:40px;
+                    line-height:66px;
+                    margin:0 $padding $padding 0;
+                    border-bottom:2px solid $orange_medium;
+                    
+                    span{
+                        overflow:hidden;
+                        position:absolute;
+                        bottom:5px;
+                        left:0;
+                        font-size:13px;
+                        line-height:18px;
+                        color:$blue_dark;
+                        font-weight:bold;
+                        //text-shadow:0px 2px 3px $black;
+                        width:86px;
+
+                        &:first-letter{
+                            text-transform:uppercase;
+                        }
+                    }
+                    
+                    &:active{
+                        @include simple_gradient($blue_medium, 0%, $blue_dark, 100%);
+                        color:$white_dark;
+
+                        span{
+                            color:$white_dark;
+                        }
+                    }
+
+                    &:nth-of-type(3n+3){
+                        margin-right:0;
+                    }
+                }
+
+                /*#micro{
+                    display:block;
+                    width:110px;
+                    height:110px;
+                    margin:0 auto;
+                    background-image:url('../images/micro.png');
+                }*/
+                #micro{
+                    @include radius(50%);
+                    display:block;
+                    width:100px;
+                    height:100px;
+                    position:fixed;
+                    left:50%;
+                    margin-left:-55px;
+                    bottom:30px;
+                    text-decoration:none;
+                    background-color:$white;
+                    background-image:url($url_motif_white);
+                    border:5px solid $blue_medium;
+
+                    span{
+                        line-height:40px;
+                        font-size:40px;
+                        width:40px;
+                        height:40px;
+                        display:block;
+                        position:absolute;
+                        left:50%;
+                        bottom:50%;
+                        margin-left:-20px;
+                        margin-bottom:-20px;
+                        color:$blue_dark;
+                    }
+
+                    &:active{
+                        background-color:$blue_medium;
+                        background-image:url($url_motif_black);
+                        border:5px solid $white_dark;
+
+                        span{
+                            color:$white_dark;
+                        }
+                    }
+                }
+            }
+
+            #config{
+                
+            }
+
+            #map{
+                display:block;
+                width:100%;
+            }
+
+            #alertes{
+                color:$blue_medium;
+
+                form{
+                    &.onOff{
+                        background-color:$white_dark;
+                        height:60px;
+                        line-height:60px;
+                        border-bottom:2px solid $orange_medium;
+                        
+                        i{
+                            font-size:25px;
+                            margin-left:$padding;
+                        }
+
+                        span{
+                            padding-left:$padding;
+                            font-size:20px;
+                        }
+                        input{
+                            &.on,&.off{
+                                float:right;
+                                height:60px;
+                            }
+                        }
+                    }
+                    &.logins{
+                        input,label{
+                            display:inline-block;
+                            height:30px;
+                            line-height:30px;
+                            width:50%;
+                            margin-bottom:10px;
+                        }
+                        input{
+                            float:right;
+                            padding:0;
+                            background:$white_dark;
+                            color:$blue_medium;
+                            border:none;
+                        }
+                        label{
+                            float:left;
+                            font-size:20px;
+                            color:$white_dark;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (max--moz-device-pixel-ratio: 2) {
+    body{
+        #main_container{
+            #header_container{
+                #header{
+                    #logo{
+                        background-size:35px 35px;
+                        background-image:url('../images/domi@2x.png');
+                    }
+                }
+            }
+        }
+    }
+}
