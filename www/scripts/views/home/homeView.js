@@ -38,7 +38,7 @@ define(
                 for (i = 0, len = e.length; i < len; i += 1) {
                      this.uploadFile(e[i],self);
                 }*/
-                navigator.notification.vibrate();
+                navigator.notification.vibrate(500);
             },
                      
             captureError : function(error){
