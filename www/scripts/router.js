@@ -9,7 +9,7 @@ define(
         'views/apps/alertesView'
     ],
     
-    function(Backbone,HeaderView,FooterView,HomeView,ConfigView,MapView,AlertesViews){
+    function(Backbone,HeaderView,FooterView,HomeView,ConfigView,MapView,AlertesView){
 
         var AppRouter = Backbone.Router.extend({
             

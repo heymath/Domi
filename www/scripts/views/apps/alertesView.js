@@ -18,13 +18,17 @@ define(
             template: _.template(alertesTemplate),
 
             events: {
-                
+                'click #gmail_on_off' : 'switchEmail'
             },
             
             render: function(){
                 this.$el.empty();
                 this.$el.append(this.template());
                 return this;
+            },
+
+            switchEmail: function(){
+                $('#gmail_on_off').toggleClass('on');
             }
         });
         
