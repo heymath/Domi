@@ -20,7 +20,7 @@ define(
             events: {
                 'click #micro' : 'captureAudio'
             },
-            
+
             render: function(){
                 this.$el.empty();
                 $('#view').removeClass('no_padding');
@@ -30,7 +30,7 @@ define(
             },
 
             captureAudio : function(){
-                navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1});                  
+                navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});                  
             },
 
             captureSuccess : function(e){
@@ -38,7 +38,7 @@ define(
                 for (i = 0, len = e.length; i < len; i += 1) {
                      this.uploadFile(e[i],self);
                 }*/
-                console.log('capture success');                
+                navigator.notification.vibrate();
             },
                      
             captureError : function(error){

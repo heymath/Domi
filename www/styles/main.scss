@@ -149,7 +149,7 @@ body{
                 margin:12px 20px 0 0;
                 background-color:$grey_light;
                 @include transition (all, 0.3s, ease, 0s);
-                @include box_shadow (0, 0, 6px, #000);
+                @include box_shadow (0, 0, 3px, #000);
                 
                 div{
                     height:40px;
@@ -160,7 +160,7 @@ body{
                     border:1px solid $black;
                     background-color:$grey_light;
                     @include transition (all, 0.3s, ease, 0s);
-                    @include box_shadow (0, 0, 2px, #000);
+                    @include box_shadow (0, 0, 0px, #000);
                 }
 
                 &.on{
