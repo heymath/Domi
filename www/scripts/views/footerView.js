@@ -9,7 +9,7 @@ define(
         var FooterView = BaseView.extend({
             
             initialize: function(){
-                console.log(navigator.language);
+                
             },
             
             el: '#main_container',
@@ -18,7 +18,7 @@ define(
             },
             
             render: function(){
-                html = "<section id='footer_container'><header id='footer'></header></section>";
+                html = "<section id='footer_container'><footer id='footer'></footer></section>";
                 this.$el.append(html);
                 return this;
             }

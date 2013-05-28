@@ -685,3 +685,13 @@
 .leaflet-container.dark .leaflet-control-mapbox-geocoder input:focus {
     border-color: #ccc;
 }
+
+.leaflet-control-container .leaflet-top.leaflet-left{
+	position:fixed;
+	margin-top:45px;
+	margin-left:14px;
+}
+
+
+
+
