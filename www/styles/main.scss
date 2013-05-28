@@ -263,17 +263,17 @@ body{
 
         #footer_container{
             width:100%;
-            height:$padding;
+            height:1000px;
             position:fixed;
-            z-index:10;
+            z-index:9999;
             left:0;
-            bottom:0;
+            top:0;
             background-color:$white;
             background-image:url($url_motif_white);
-
+            @include transition (all, 1s, ease, 0s);
+            
             #footer{
-                height:80px;
-                margin:0 auto;
+                
             }
         }
         
@@ -312,7 +312,6 @@ body{
                         line-height:18px;
                         color:$blue_dark;
                         font-weight:bold;
-                        //text-shadow:0px 2px 3px $black;
                         width:86px;
 
                         &:first-letter{

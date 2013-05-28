@@ -9,7 +9,7 @@ define(
         var HeaderView = BaseView.extend({
             
             initialize: function(){
-                console.log(navigator.language);
+                
             },
             
             el: '#main_container',
