@@ -31,6 +31,7 @@ define(
                 this.app.view.home = new HomeView({router: this});
                 this.app.view.home.render();
                 this.app.view.headerView.hide_btn_back();
+                $('#footer_container').css('top', (window.screen.height-34)+'px');
             },
 
             config: function(){

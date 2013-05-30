@@ -24,9 +24,7 @@ define(
             render: function(){
                 this.$el.empty();
                 this.$el.append(this.template());
-                if($('#view').hasClass('no_padding'))
-                    $('#view').removeClass('no_padding');
-                $('#footer_container').css('top', (window.screen.height-34)+'px');
+                $('#view').removeClass('no_padding');
                 return this;
             },
 
