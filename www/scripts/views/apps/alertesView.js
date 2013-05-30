@@ -24,11 +24,22 @@ define(
             render: function(){
                 this.$el.empty();
                 this.$el.append(this.template());
+                if(localStorage.getItem('gmail') == 'on'){
+                    $('#gmail_on_off').addClass('on');
+                }
                 return this;
             },
 
             switchEmail: function(){
+                console.log('hasClass on : ' + $('#gmail_on_off').hasClass('on'));
                 $('#gmail_on_off').toggleClass('on');
+                console.log('hasClass on : ' + $('#gmail_on_off').hasClass('on'));
+                if(localStorage.getItem('gmail') == 'on'){
+                    localStorage.setItem('gmail', 'off');
+                }else{
+                    localStorage.setItem('gmail', 'on');
+                }
+                return;
             }
         });
         

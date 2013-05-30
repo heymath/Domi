@@ -28,29 +28,33 @@ define(
             
             home: function(){
                 console.log("Routage vers la view home");
-                homeView = new HomeView({router: this});
+                this.app.view.home = new HomeView({router: this});
+                this.app.view.home.render();
                 this.app.view.headerView.hide_btn_back();
-                homeView.render();
             },
 
             config: function(){
                 console.log("Routage vers la view config");
-                configView = new ConfigView({router: this})
-                configView.render();
+                this.app.config = new ConfigView({router: this})
+                this.app.config.render();
                 this.app.view.headerView.show_btn_back();
             },
 
             map: function(){
                 console.log("Routage vers la view map");
-                mapView = new MapView({router: this})
-                mapView.render();
+                this.app.map = new MapView({router: this})
+                this.app.map.render();
                 this.app.view.headerView.show_btn_back();
             },
 
             alertes: function(){
                 console.log("Routage vers la view alertes");
-                alertesView = new AlertesView({router: this})
-                alertesView.render();
+                if(this.app.alertes == null){
+                    this.app.alertes = new AlertesView({router: this});
+                    this.app.alertes.render();
+                }else{
+                    this.app.alertes.render();
+                }
                 this.app.view.headerView.show_btn_back();
             }
         });
