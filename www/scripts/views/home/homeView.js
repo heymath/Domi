@@ -58,7 +58,7 @@ define(
                 path = media.fullPath,
                 name = media.name;
 
-                ft.upload(path,"http://192.168.1.12:3000/domi",function(result) {
+                ft.upload(path,"http://"+localStorage.getItem('ip')+":3000/domi",function(result) {
                    console.log('Upload success: ' + result.responseCode);
                    console.log(result.bytesSent + ' bytes sent');
                    },
