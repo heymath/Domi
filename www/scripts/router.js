@@ -36,8 +36,12 @@ define(
 
             config: function(){
                 console.log("Routage vers la view config");
-                this.app.config = new ConfigView({router: this})
-                this.app.config.render();
+                if(this.app.alertes == null){
+                  this.app.config = new ConfigView({router: this})
+                  this.app.config.render();
+                }else{
+                  this.app.config.render();
+                }
                 this.app.view.headerView.show_btn_back();
             },
 

@@ -29,14 +29,22 @@ define(
             },
 
             captureAudio : function(){
-                navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});                  
+            
+                $.get("http://"+localStorage.getItem('ip')+":3000/statut")
+                .success(function(datas){
+                  navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});
+                }.bind(this))
+                .error(function(error){
+                  alert('Domy a disparu, vous devez changer l\'ip dans config !');
+              });               
             },
+            
 
             captureSuccess : function(e){
-                /*var i, len;
+                var i, len;
                 for (i = 0, len = e.length; i < len; i += 1) {
                      this.uploadFile(e[i],self);
-                }*/
+                }
                 navigator.notification.vibrate(500);
             },
                      
@@ -50,7 +58,7 @@ define(
                 path = media.fullPath,
                 name = media.name;
 
-                ft.upload(path,"http://kevinlarosa.fr:3001/api/content?api-key=foo&idRoom="+localStorage.getItem("currentRoom"),function(result) {
+                ft.upload(path,"http://192.168.1.12:3000/domi",function(result) {
                    console.log('Upload success: ' + result.responseCode);
                    console.log(result.bytesSent + ' bytes sent');
                    },
