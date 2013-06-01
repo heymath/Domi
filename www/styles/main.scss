@@ -118,84 +118,82 @@ body{
         margin:0;
     }
 
-    form{
-        &.onOff{
-            background-color:$white_dark;
-            height:60px;
-            line-height:60px;
-            border-bottom:2px solid $orange_medium;
-            
-            i{
-                font-size:25px;
-                margin-left:$padding;
-            }
+    .onOff{
+        background-color:$white_dark;
+        height:60px;
+        line-height:60px;
+        border-bottom:2px solid $orange_medium;
+        
+        i{
+            font-size:25px;
+            margin-left:$padding;
+        }
 
-            span{
-                padding-left:$padding;
-                font-size:20px;
-            }
-            input{
-                &.on,&.off{
-                    height:30px;
-                    width:30px;
-                }
-            }
-            .btn_on_off{
-                width:100px;
-                height:40px;
-                float:right;
-                position:relative;
-                display:inline-block;
-                margin:12px 20px 0 0;
-                background-color:$grey_light;
-                @include transition (all, 0.3s, ease, 0s);
-                @include box_shadow (0, 0, 3px, #000);
-                
-                div{
-                    height:40px;
-                    width:40px;
-                    position:absolute;
-                    left:0;
-                    top:-1px;
-                    border:1px solid $black;
-                    background-color:$grey_light;
-                    @include transition (all, 0.3s, ease, 0s);
-                    @include box_shadow (0, 0, 0px, #000);
-                }
-
-                &.on{
-                    background-color:$blue_medium;
-                    @include box_shadow_inset (0, 0, 10px, #000, inset);
-
-                     div{
-                        left:100%;
-                        margin-left:-40px;
-                        top:-1px;
-                    }   
-                }
+        span{
+            padding-left:$padding;
+            font-size:20px;
+        }
+        input{
+            &.on,&.off{
+                height:30px;
+                width:30px;
             }
         }
-        &.logins{
-            input,label{
-                display:inline-block;
-                height:30px;
-                line-height:30px;
-                width:50%;
-                margin-bottom:10px;
+        .btn_on_off{
+            width:100px;
+            height:40px;
+            float:right;
+            position:relative;
+            display:inline-block;
+            margin:12px 20px 0 0;
+            background-color:$grey_light;
+            @include transition (all, 0.3s, ease, 0s);
+            @include box_shadow (0, 0, 3px, #000);
+            
+            div{
+                height:40px;
+                width:40px;
+                position:absolute;
+                left:0;
+                top:-1px;
+                border:1px solid $black;
+                background-color:$grey_light;
+                @include transition (all, 0.3s, ease, 0s);
+                @include box_shadow (0, 0, 0px, #000);
             }
-            input{
-                float:right;
-                padding:0;
-                text-align:center;
-                background:$white_dark;
-                color:$blue_medium;
-                border:none;
+
+            &.on{
+                background-color:$blue_medium;
+                @include box_shadow_inset (0, 0, 10px, #000, inset);
+
+                 div{
+                    left:100%;
+                    margin-left:-40px;
+                    top:-1px;
+                }   
             }
-            label{
-                float:left;
-                font-size:20px;
-                color:$white_dark;
-            }
+        }
+    }
+    form{
+        input,label{
+            display:inline-block;
+            height:30px;
+            line-height:30px;
+            width:50%;
+            margin-bottom:10px;
+        }
+        input{
+            float:right;
+            padding:0;
+            text-align:center;
+            background:$white_dark;
+            color:$blue_medium;
+            border:none;
+        }
+        label{
+            float:left;
+            font-size:20px;
+            color:$white_dark;
         }
     }
 

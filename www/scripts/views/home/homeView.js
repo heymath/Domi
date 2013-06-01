@@ -23,9 +23,8 @@ define(
 
             render: function(){
                 this.$el.empty();
-                $('#view').removeClass('no_padding');
                 this.$el.append(this.template());
-                $('#footer_container').css('top', (window.screen.height-34)+'px');
+                $('#view').removeClass('no_padding');
                 return this;
             },
 
