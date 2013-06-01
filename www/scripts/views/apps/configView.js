@@ -23,7 +23,7 @@ define(
             
             statut : function(){
               $.get("http://"+localStorage.getItem('ip')+":3000/statut")
-                .success(function(datas){
+                .success(function(data){
                  alert('Domy est disponible');
                 })
                 .error(function(error){
@@ -34,7 +34,7 @@ define(
             setIp: function(){
               var ip = this.$el.find('input[name="ip"]').val();
               $.get("http://"+ip+":3000/statut")
-                .success(function(datas){
+                .success(function(data){
                  localStorage.setItem('ip',ip);
                  alert("L'ip est configuré");
                 })

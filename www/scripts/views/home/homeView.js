@@ -35,7 +35,7 @@ define(
                   navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});
                 }.bind(this))
                 .error(function(error){
-                  alert('Domy a disparu, vous devez changer l\'ip dans config !');
+                  alert('Domi a disparu, vous devez changer l\'ip dans config !');
               });               
             },
             

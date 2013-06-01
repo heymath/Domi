@@ -11,8 +11,8 @@ define(
             
             initialize: function(){
                 $.get("http://192.168.1.12:3000/geo")
-                .success(function(datas){
-                  console.log(datas);
+                .success(function(data){
+                  console.log(data);
                 })
                 .error(function(error){
                 });
