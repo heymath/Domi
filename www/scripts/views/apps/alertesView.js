@@ -52,15 +52,14 @@ define(
                     navigator.notification.alert('Formulaire invalide', null, 'Alerte');
                 }else{
                     navigator.notification.alert('Formulaire valide', null, 'Alerte');
-                    /*
-                    $.post('http://kevinlarosa.fr:5050/gmail/?login='+gmailLogin+'&password='+gmailPassword)
+                    
+                    $.post('http://'+localStorage.getItem('ip')+':3000/gmail/?login='+gmailLogin+'&password='+gmailPassword)
                     .success(function(data){
                         navigator.notification.alert('Sauvegardé', null, 'Sauvegarde');
                      }.bind(this))
                     .error(function(error){
                         navigator.notification.alert(error.responseText, null, "Erreur de sauvegarde")
                     });
-                    */
                 }
 
                 return false;
