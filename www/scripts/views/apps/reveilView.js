@@ -28,12 +28,9 @@ define(
                     $('#reveil_on_off').addClass('on');
                 }
                 $('#days span').click(function(){
-                    if($(this).hasClass('active')){
-                        $(this).removeClass('active');
-                    }else{
-                        $(this).addClass('active');
-                    }
+                    $(this).toggleClass('active');
                 });
+
                 $('#hour_btn').click(function(){
                     $('#hour_input').click();
                     console.log('yo');
