@@ -6,10 +6,11 @@ define(
         'views/home/homeView',
         'views/apps/configView',
         'views/apps/mapView',
-        'views/apps/alertesView'
+        'views/apps/alertesView',
+        'views/apps/reveilView'
     ],
     
-    function(Backbone,HeaderView,FooterView,HomeView,ConfigView,MapView,AlertesView){
+    function(Backbone,HeaderView,FooterView,HomeView,ConfigView,MapView,AlertesView,ReveilView){
 
         var AppRouter = Backbone.Router.extend({
             
@@ -17,7 +18,8 @@ define(
                 '': 'home',
                 'config': 'config',
                 'map': 'map',
-                'alertes': 'alertes'
+                'alertes': 'alertes',
+                'reveil': 'reveil'
             },
              
             app: {
@@ -28,7 +30,9 @@ define(
             
             home: function(){
                 console.log("Routage vers la view home");
-                this.app.view.home = new HomeView({router: this});
+                if(this.app.view.home == null){
+                    this.app.view.home = new HomeView({router: this});
+                }
                 this.app.view.home.render();
                 this.app.view.headerView.hide_btn_back();
                 $('#footer_container').css('top', (window.screen.height-34)+'px');
@@ -36,30 +40,37 @@ define(
 
             config: function(){
                 console.log("Routage vers la view config");
-                if(this.app.alertes == null){
-                  this.app.config = new ConfigView({router: this})
-                  this.app.config.render();
-                }else{
-                  this.app.config.render();
+                if(this.app.view.config == null){
+                    this.app.view.config = new ConfigView({router: this})
                 }
+                this.app.view.config.render();
                 this.app.view.headerView.show_btn_back();
             },
 
             map: function(){
                 console.log("Routage vers la view map");
-                this.app.map = new MapView({router: this})
-                this.app.map.render();
+                if(this.app.view.map == null){
+                    this.app.view.map = new MapView({router: this})
+                }
+                this.app.view.map.render();
                 this.app.view.headerView.show_btn_back();
             },
 
             alertes: function(){
                 console.log("Routage vers la view alertes");
-                if(this.app.alertes == null){
-                    this.app.alertes = new AlertesView({router: this});
-                    this.app.alertes.render();
-                }else{
-                    this.app.alertes.render();
+                if(this.app.view.alertes == null){
+                    this.app.view.alertes = new AlertesView({router: this});
                 }
+                this.app.view.alertes.render();
+                this.app.view.headerView.show_btn_back();
+            },
+
+            reveil: function(){
+                console.log("Routage vers la view réveil");
+                if(this.app.view.reveil == null){
+                    this.app.view.reveil = new ReveilView({router: this})
+                }
+                this.app.view.reveil.render();
                 this.app.view.headerView.show_btn_back();
             }
         });

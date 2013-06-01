@@ -109,286 +109,336 @@ body{
     margin:0;
     padding:0;
     font-family:Oswald,Helvetica,Arial,sans-serif;
-    font-size:12px;
-    line-height:18px;
+    font-size:16px;
+    line-height:24px;
     color:$grey_medium;
     
     figure,img,div,p,a,h1,h2,h3,h4,h5,h6,section,body,html{
         padding:0;
         margin:0;
     }
+}
+.onOff{
+    background-color:$white_dark;
+    height:60px;
+    line-height:60px;
+    border-bottom:2px solid $orange_medium;
+    
+    i{
+        font-size:25px;
+        margin-left:$padding;
+    }
 
-    .onOff{
-        background-color:$white_dark;
-        height:60px;
-        line-height:60px;
-        border-bottom:2px solid $orange_medium;
+    span{
+        padding-left:$padding;
+        font-size:20px;
+    }
+    input{
+        &.on,&.off{
+            height:30px;
+            width:30px;
+        }
+    }
+    .btn_on_off{
+        width:100px;
+        height:40px;
+        float:right;
+        position:relative;
+        display:inline-block;
+        margin:12px 20px 0 0;
+        background-color:$grey_light;
+        @include transition (all, 0.3s, ease, 0s);
+        @include box_shadow (0, 0, 3px, #000);
         
-        i{
-            font-size:25px;
-            margin-left:$padding;
-        }
-
-        span{
-            padding-left:$padding;
-            font-size:20px;
-        }
-        input{
-            &.on,&.off{
-                height:30px;
-                width:30px;
-            }
-        }
-        .btn_on_off{
-            width:100px;
+        div{
             height:40px;
-            float:right;
-            position:relative;
-            display:inline-block;
-            margin:12px 20px 0 0;
+            width:40px;
+            position:absolute;
+            left:0;
+            top:-1px;
+            border:1px solid $black;
             background-color:$grey_light;
             @include transition (all, 0.3s, ease, 0s);
-            @include box_shadow (0, 0, 3px, #000);
-            
-            div{
-                height:40px;
-                width:40px;
-                position:absolute;
-                left:0;
+            @include box_shadow (0, 0, 0px, #000);
+        }
+
+        &.on{
+            background-color:$blue_medium;
+            @include box_shadow_inset (0, 0, 10px, #000, inset);
+
+             div{
+                left:100%;
+                margin-left:-40px;
                 top:-1px;
-                border:1px solid $black;
-                background-color:$grey_light;
-                @include transition (all, 0.3s, ease, 0s);
-                @include box_shadow (0, 0, 0px, #000);
-            }
+            }   
+        }
+    }
+}
 
-            &.on{
-                background-color:$blue_medium;
-                @include box_shadow_inset (0, 0, 10px, #000, inset);
+form{
+    input,label{
+        display:inline-block;
+        height:30px;
+        line-height:30px;
+        width:50%;
+        margin-bottom:10px;
+    }
+    input{
+        float:right;
+        padding:0;
+        text-align:center;
+        background:$white_dark;
+        color:$blue_medium;
+        border:none;
+    }
+    label{
+        float:left;
+        font-size:20px;
+        color:$white_dark;
+    }
+}
 
-                 div{
-                    left:100%;
-                    margin-left:-40px;
-                    top:-1px;
-                }   
+#main_container{
+    position:relative;
+    margin:0 auto;
+    
+    h1, h2, h3, h4, h5, h6{
+        padding:0;
+        margin:0;
+    }
+}
+        
+hr {
+    background-color:$grey_light;
+    width:90%;
+    height:1px;
+    border:none;
+    margin:0 auto;
+}
+        
+#header_container{
+    width:100%;
+    height:45px;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    background-color:$white;
+    background-image:url($url_motif_white);
+    
+    #header{
+        height:45px;
+        margin:0 auto;
+        text-align:center;
+        position:relative;
+            
+        #logo{
+            display:inline-block;
+            height:35px;
+            width:35px;
+            position:absolute;
+            top:7px;
+            right:$padding;
+            background:url('../images/domi.png');
+        }
+
+        #back{
+            width:35px;
+            height:35px;
+            font-size:25px;
+            line-height:35px;
+            display:inline-block;
+            position:absolute;
+            left:$padding;
+            top:7px;
+            color:$blue_dark;
+            text-decoration:none;
+            
+            &:active{
+                color:$blue_medium;
             }
         }
     }
-    form{
-        input,label{
-            display:inline-block;
-            height:30px;
-            line-height:30px;
-            width:50%;
-            margin-bottom:10px;
+}
+
+#footer_container{
+    width:100%;
+    height:1000px;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    background-color:$white;
+    background-image:url($url_motif_white);
+    @include transition (all, 1s, ease, 0s);
+    
+    #footer{
+        
+    }
+}
+        
+#view{
+    padding:59px $padding $padding $padding;
+    
+    &.no_padding{
+        padding:45px 0 14px 0;
+    }
+}
+
+#home{
+    display:inline-block;
+    position:relative;
+    width:100%;
+    
+    .app{
+        @include simple_gradient($white, 0%, $white_dark, 100%);
+        background-color:$white_dark;
+        display:inline-block;
+        width:86px;
+        height:84px;
+        color:$blue_medium;
+        position:relative;
+        text-align:center;
+        font-size:40px;
+        line-height:66px;
+        margin:0 $padding $padding 0;
+        border-bottom:2px solid $orange_medium;
+        
+        span{
+            overflow:hidden;
+            position:absolute;
+            bottom:5px;
+            left:0;
+            font-size:13px;
+            line-height:18px;
+            color:$blue_dark;
+            font-weight:bold;
+            width:86px;
+
+            &:first-letter{
+                text-transform:uppercase;
+            }
         }
-        input{
-            float:right;
-            padding:0;
-            text-align:center;
-            background:$white_dark;
-            color:$blue_medium;
-            border:none;
+        
+        &:active{
+            @include simple_gradient($blue_medium, 0%, $blue_dark, 100%);
+            color:$white_dark;
+
+            span{
+                color:$white_dark;
+            }
         }
-        label{
-            float:left;
-            font-size:20px;
+
+        &:nth-of-type(3n+3){
+            margin-right:0;
+        }
+    }
+}
+
+/*#micro{
+    display:block;
+    width:110px;
+    height:110px;
+    margin:0 auto;
+    background-image:url('../images/micro.png');
+}*/
+#micro{
+    @include radius(50%);
+    display:block;
+    width:100px;
+    height:100px;
+    position:fixed;
+    left:50%;
+    margin-left:-55px;
+    bottom:30px;
+    text-decoration:none;
+    background-color:$white;
+    background-image:url($url_motif_white);
+    border:5px solid $blue_medium;
+
+    span{
+        line-height:40px;
+        font-size:40px;
+        width:40px;
+        height:40px;
+        display:block;
+        position:absolute;
+        left:50%;
+        bottom:50%;
+        margin-left:-20px;
+        margin-bottom:-20px;
+        color:$blue_dark;
+    }
+
+    &:active{
+        background-color:$blue_medium;
+        background-image:url($url_motif_black);
+        border:5px solid $white_dark;
+
+        span{
             color:$white_dark;
         }
     }
+}
 
-    #main_container{
-        position:relative;
-        margin:0 auto;
+#config{
+    
+}
+
+#map{
+    display:block;
+    width:100%;
+}
+
+#alertes{
+    color:$blue_medium;
+}
+
+#reveil{
+
+    #hour_block{
+        width:100%;
         
-        h1, h2, h3, h4, h5, h6{
-            padding:0;
-            margin:0;
+        #hour_big{
+            font-size:80px;
+            line-height:90px;
+            float:left;
+            color:$white_dark;
+            font-weight:100;
+
+            #hours{
+                font-weight:bold;
+                font-size:90px;
+                line-height:90px;
+            }
         }
-        
-        hr {
-            background-color:$grey_light;
-            width:90%;
-            height:1px;
-            border:none;
-            margin:0 auto;
+        #hour_edit{
+            font-size:40px;
+            line-height:90px;
+            float:right;
         }
-        
-        #header_container{
+        #hour_btn{
+            
+        }
+        #hour_input{
+            display:none;
+            visibility:hidden;
+        }
+        #days{
+            background-color:rgba(0,0,0,0.3);
             width:100%;
-            height:45px;
-            position:fixed;
-            z-index:9999;
-            left:0;
-            top:0;
-            background-color:$white;
-            background-image:url($url_motif_white);
-            
-            #header{
-                height:45px;
-                margin:0 auto;
-                text-align:center;
-                position:relative;
-                    
-                #logo{
-                    display:inline-block;
-                    height:35px;
-                    width:35px;
-                    position:absolute;
-                    top:7px;
-                    right:$padding;
-                    background:url('../images/domi.png');
+            clear:both;
+            margin-bottom:20px;
+
+            span{
+                text-transform:uppercase;
+                font-weight:normal;
+                color:$grey_medium;
+                margin-left:$padding;
+
+                &.active{
+                    color:$white;
                 }
-
-                #back{
-                    width:35px;
-                    height:35px;
-                    font-size:25px;
-                    line-height:35px;
-                    display:inline-block;
-                    position:absolute;
-                    left:$padding;
-                    top:7px;
-                    color:$blue_dark;
-                    text-decoration:none;
-                    
-                    &:active{
-                        color:$blue_medium;
-                    }
-                }
-            }
-        }
-
-        #footer_container{
-            width:100%;
-            height:1000px;
-            position:fixed;
-            z-index:9999;
-            left:0;
-            top:0;
-            background-color:$white;
-            background-image:url($url_motif_white);
-            @include transition (all, 1s, ease, 0s);
-            
-            #footer{
-                
-            }
-        }
-        
-        #view{
-            padding:94px $padding $padding $padding;
-            
-            &.no_padding{
-                padding:45px 0 14px 0;
-            }
-
-            #home{
-                display:inline-block;
-                position:relative;
-                width:100%;
-                
-                .app{
-                    @include simple_gradient($white, 0%, $white_dark, 100%);
-                    background-color:$white_dark;
-                    display:inline-block;
-                    width:86px;
-                    height:84px;
-                    color:$blue_medium;
-                    position:relative;
-                    text-align:center;
-                    font-size:40px;
-                    line-height:66px;
-                    margin:0 $padding $padding 0;
-                    border-bottom:2px solid $orange_medium;
-                    
-                    span{
-                        overflow:hidden;
-                        position:absolute;
-                        bottom:5px;
-                        left:0;
-                        font-size:13px;
-                        line-height:18px;
-                        color:$blue_dark;
-                        font-weight:bold;
-                        width:86px;
-
-                        &:first-letter{
-                            text-transform:uppercase;
-                        }
-                    }
-                    
-                    &:active{
-                        @include simple_gradient($blue_medium, 0%, $blue_dark, 100%);
-                        color:$white_dark;
-
-                        span{
-                            color:$white_dark;
-                        }
-                    }
-
-                    &:nth-of-type(3n+3){
-                        margin-right:0;
-                    }
-                }
-
-                /*#micro{
-                    display:block;
-                    width:110px;
-                    height:110px;
-                    margin:0 auto;
-                    background-image:url('../images/micro.png');
-                }*/
-                #micro{
-                    @include radius(50%);
-                    display:block;
-                    width:100px;
-                    height:100px;
-                    position:fixed;
-                    left:50%;
-                    margin-left:-55px;
-                    bottom:30px;
-                    text-decoration:none;
-                    background-color:$white;
-                    background-image:url($url_motif_white);
-                    border:5px solid $blue_medium;
-
-                    span{
-                        line-height:40px;
-                        font-size:40px;
-                        width:40px;
-                        height:40px;
-                        display:block;
-                        position:absolute;
-                        left:50%;
-                        bottom:50%;
-                        margin-left:-20px;
-                        margin-bottom:-20px;
-                        color:$blue_dark;
-                    }
-
-                    &:active{
-                        background-color:$blue_medium;
-                        background-image:url($url_motif_black);
-                        border:5px solid $white_dark;
-
-                        span{
-                            color:$white_dark;
-                        }
-                    }
-                }
-            }
-
-            #config{
-                
-            }
-
-            #map{
-                display:block;
-                width:100%;
-            }
-
-            #alertes{
-                color:$blue_medium;
             }
         }
     }
