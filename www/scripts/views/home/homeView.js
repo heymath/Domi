@@ -30,7 +30,7 @@ define(
 
             captureAudio : function(){
             
-                $.get("http://"+localStorage.getItem('ip')+":3000/statut")
+              $.get("http://"+localStorage.getItem('ip')+":3000/statut")
                 .success(function(datas){
                   navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});
                 }.bind(this))
