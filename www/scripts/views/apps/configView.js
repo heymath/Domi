@@ -39,7 +39,7 @@ define(
                  alert("L'adresse IP est configurée");
                 })
                 .error(function(error){
-                  alert("Impossible de joindre l'adresse IP");
+                  alert("Impossible de joindre Domi");
               });
                 return false;
             },

@@ -27,9 +27,9 @@ define(
                 this.$el.append(this.template());
                 if(localStorage.getItem('gmail') == 'on'){
                     $('#gmail_on_off').addClass('on');
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                    //$.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
                 }else{
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
+                    //$.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
                 }
                 return this;
             },
@@ -60,7 +60,7 @@ define(
                     
                     $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
                     .success(function(data){
-                        navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
+                        //navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
                      }.bind(this))
                     .error(function(error){
                         navigator.notification.alert(error.responseText, null, 'Gmail')
