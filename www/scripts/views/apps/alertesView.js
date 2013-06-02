@@ -53,7 +53,7 @@ define(
                 }else{
                     navigator.notification.alert('Formulaire valide', null, 'Alerte');
                     
-                    $.post('http://'+localStorage.getItem('ip')+':3000/gmail/?login='+gmailLogin+'&password='+gmailPassword)
+                    $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
                     .success(function(data){
                         navigator.notification.alert('Sauvegardé', null, 'Sauvegarde');
                      }.bind(this))
