@@ -46,24 +46,21 @@ define(
                 var gmailLogin = this.$el.find('input[name="gmailLogin"]').val(),
                     gmailPassword = this.$el.find('input[name="gmailPassword"]').val(),
                     errors = 0;
-
                 errors = this.formCheck(gmailLogin);
                 errors += this.formCheck(gmailPassword);
-
                 if(errors > 0){
                     navigator.notification.alert('Formulaire invalide', null, 'Alerte');
                 }else{
-                    navigator.notification.alert('Formulaire valide', null, 'Alerte');
+                    navigator.notification.vibrate(500);
                     
                     $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
                     .success(function(data){
-                        navigator.notification.alert('Sauvegardé', null, 'Sauvegarde');
+                        navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
                      }.bind(this))
                     .error(function(error){
-                        navigator.notification.alert(error.responseText, null, "Erreur de sauvegarde")
+                        navigator.notification.alert(error.responseText, null, 'Gmail')
                     });
                 }
-
                 return false;
             },
 
