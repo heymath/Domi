@@ -35,8 +35,10 @@ define(
                 $('#gmail_on_off').toggleClass('on');
                 if(localStorage.getItem('gmail') == 'on'){
                     localStorage.setItem('gmail', 'off');
+                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
                 }else{
                     localStorage.setItem('gmail', 'on');
+                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
                 }
             },
 
