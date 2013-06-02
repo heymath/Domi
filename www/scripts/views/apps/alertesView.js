@@ -44,10 +44,8 @@ define(
                 var gmailLogin = this.$el.find('input[name="gmailLogin"]').val(),
                     gmailPassword = this.$el.find('input[name="gmailPassword"]').val(),
                     errors = 0;
-
                 errors = this.formCheck(gmailLogin);
                 errors += this.formCheck(gmailPassword);
-
                 if(errors > 0){
                     navigator.notification.alert('Formulaire invalide', null, 'Alerte');
                 }else{
@@ -62,7 +60,6 @@ define(
                     });
                     */
                 }
-
                 return false;
             },
 
