@@ -49,7 +49,7 @@ define(
                 if(errors > 0){
                     navigator.notification.alert('Formulaire invalide', null, 'Alerte');
                 }else{
-                    navigator.notification.alert('Formulaire valide', null, 'Alerte');
+                    navigator.notification.vibrate(500);
                     
                     $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
                     .success(function(data){
