@@ -32,15 +32,37 @@ define(
             },
 
             switchGmail: function(){
-                $('#gmail_on_off').toggleClass('on');
+                // désactive Gmail
                 if(localStorage.getItem('gmail') == 'on'){
+                    $('#gmail_on_off').toggleClass('on');
                     // désactive l'app et l'API Gmail
                     localStorage.setItem('gmail', 'off');
                     $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
-                }else{
-                    // active l'app et l'API Gmail
-                    localStorage.setItem('gmail', 'on');
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                }
+                // active Gmail
+                else{
+                    // si les logins Gmail sont bien paramétrés
+                    if(localStorage.getItem('gmailLogin') && localStorage.getItem('gmailPassword')){
+                        $('#gmail_on_off').toggleClass('on');
+                        // active l'app et l'API Gmail
+                        localStorage.setItem('gmail', 'on');
+                        $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                        navigator.notification.vibrate(500);
+                        // connexion à la boîte mail
+                        var gmailLogin = localStorage.getItem('gmailLogin'),
+                            gmailPassword = localStorage.getItem('gmailPassword');
+                        $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
+                        .success(function(data){
+                            //navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
+                         }.bind(this))
+                        .error(function(error){
+                            navigator.notification.alert(error.responseText, null, 'Gmail')
+                        });
+                    }
+                    // si les logins Gmail ne sont pas paramétrés
+                    else{
+                        navigator.notification.alert('Tu ne m\'a pas donné tes identifiants Gmail.', null, 'Attention !');
+                    }
                 }
             },
 
@@ -50,18 +72,13 @@ define(
                     errors = 0;
                 errors = this.formCheck(gmailLogin);
                 errors += this.formCheck(gmailPassword);
+                // si erreur
                 if(errors > 0){
-                    navigator.notification.alert('Formulaire invalide', null, 'Alerte');
+                    navigator.notification.alert('Tu as mal rempli le formulaire.', null, 'Attention !');
                 }else{
                     navigator.notification.vibrate(500);
-                    
-                    $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
-                    .success(function(data){
-                        //navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
-                     }.bind(this))
-                    .error(function(error){
-                        navigator.notification.alert(error.responseText, null, 'Gmail')
-                    });
+                    localStorage.setItem('gmailLogin', gmailLogin);
+                    localStorage.setItem('gmailPassword', gmailPassword);
                 }
                 return false;
             },
