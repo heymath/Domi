@@ -27,9 +27,6 @@ define(
                 this.$el.append(this.template());
                 if(localStorage.getItem('gmail') == 'on'){
                     $('#gmail_on_off').addClass('on');
-                    //$.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
-                }else{
-                    //$.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
                 }
                 return this;
             },

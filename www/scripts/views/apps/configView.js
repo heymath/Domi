@@ -22,25 +22,25 @@ define(
             },
             
             statut : function(){
-              $.get("http://"+localStorage.getItem('ip')+":3000/statut")
+                $.get("http://"+localStorage.getItem('ip')+":3000/statut")
                 .success(function(data){
-                 alert('Domy est disponible');
+                    alert('Domy est disponible');
                 })
                 .error(function(error){
-                  alert('Domy a disparu');
-              });
+                    alert('Domy a disparu');
+                });
             },
             
             setIp: function(){
-              var ip = this.$el.find('input[name="ip"]').val();
-              $.get("http://"+ip+":3000/statut")
+                var ip = this.$el.find('input[name="ip"]').val();
+                $.get("http://"+ip+":3000/statut")
                 .success(function(data){
-                 localStorage.setItem('ip',ip);
-                 alert("L'adresse IP est configurée");
+                    localStorage.setItem('ip',ip);
+                    alert("L'adresse IP est configurée");
                 })
                 .error(function(error){
-                  alert("Impossible de joindre Domi");
-              });
+                    alert("Impossible de joindre Domi");
+                });
                 return false;
             },
             

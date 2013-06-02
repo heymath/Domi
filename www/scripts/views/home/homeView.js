@@ -10,7 +10,11 @@ define(
         var HomeView = BaseView.extend({
             
             initialize: function(){
-
+                if(localStorage.getItem('gmail') == 'on'){
+                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                }else{
+                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
+                }
             },
             
             el: '#view',
