@@ -34,9 +34,11 @@ define(
             switchGmail: function(){
                 $('#gmail_on_off').toggleClass('on');
                 if(localStorage.getItem('gmail') == 'on'){
+                    // désactive l'app et l'API Gmail
                     localStorage.setItem('gmail', 'off');
                     $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
                 }else{
+                    // active l'app et l'API Gmail
                     localStorage.setItem('gmail', 'on');
                     $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
                 }
@@ -65,7 +67,7 @@ define(
             },
 
             formCheck: function(field){
-                if(field === null || field === '')
+                if(field == null || field === '')
                     return 1;
                 return 0;
             }
