@@ -36,10 +36,10 @@ define(
               $.get("http://"+ip+":3000/statut")
                 .success(function(data){
                  localStorage.setItem('ip',ip);
-                 alert("L'ip est configuré");
+                 alert("L'adresse IP est configurée");
                 })
                 .error(function(error){
-                  alert("Impossible de joindre l'ip");
+                  alert("Impossible de joindre l'adresse IP");
               });
                 return false;
             },
