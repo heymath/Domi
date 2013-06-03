@@ -54,6 +54,7 @@ define(
                         $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
                         .success(function(data){
                             //navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
+                            navigator.notification.vibrate(500);
                          }.bind(this))
                         .error(function(error){
                             navigator.notification.alert(error.responseText, null, 'Gmail')
