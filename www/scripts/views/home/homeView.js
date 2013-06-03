@@ -11,9 +11,14 @@ define(
             
             initialize: function(){
                 if(localStorage.getItem('gmail') == 'on'){
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                    $.post('http://'+localStorage.getItem('ip')+':3000/gmailStatut', { statut :'true' });
                 }else{
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
+                    $.post('http://'+localStorage.getItem('ip')+':3000/gmailStatut', { statut : 'false' });
+                }
+                if(localStorage.getItem('reveil') == 'on'){
+                    $.post('http://'+localStorage.getItem('ip')+':3000/reveilStatut', { statut : 'true' });
+                }else{
+                    $.post('http://'+localStorage.getItem('ip')+':3000/reveilStatut', { statut : 'false' });
                 }
             },
             
@@ -36,10 +41,10 @@ define(
             
               $.get("http://"+localStorage.getItem('ip')+":3000/statut")
                 .success(function(datas){
-                  navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});
+                    navigator.device.capture.captureAudio(this.captureSuccess.bind(this), this.captureError, { limit: 1, duration: 10});
                 }.bind(this))
                 .error(function(error){
-                  alert('Domi a disparu, vous devez changer l\'adresse IP dans config !');
+                    alert('Domi a disparu, vous devez changer l\'adresse IP dans config !');
               });               
             },
             

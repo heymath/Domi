@@ -28,6 +28,7 @@ define(
                 if(localStorage.getItem('reveil') == 'on'){
                     $('#reveil_on_off').addClass('on');
                 }
+
                 $('#days span').click(function(){
                     $(this).toggleClass('active');
                 });
@@ -40,8 +41,8 @@ define(
                     if(localStorage.getItem('reveil') == 'on'){
                         // envoyer à Domi la nouvelle heure
                         $.post('http://'+localStorage.getItem('ip')+':3000/reveil', {
-                            'hour': reveil_heure,
-                            'minutes': reveil_minutes
+                            'hour' : reveil_heure,
+                            'minutes' : reveil_minutes
                         })
                         .success(function(data){
                             navigator.notification.vibrate(500);
@@ -56,10 +57,14 @@ define(
 
             switchReveil: function(){
                 $('#reveil_on_off').toggleClass('on');
+
                 if(localStorage.getItem('reveil') == 'on'){
                     localStorage.setItem('reveil', 'off');
-                }else{
+                    $.post('http://'+localStorage.getItem('ip')+':3000/reveilStatut', { statut : 'false' });
+                }
+                else{
                     localStorage.setItem('reveil', 'on');
+                    $.post('http://'+localStorage.getItem('ip')+':3000/reveilStatut', { statut : 'true' });
                     navigator.notification.vibrate(500);
                 }
             }

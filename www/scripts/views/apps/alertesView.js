@@ -37,7 +37,7 @@ define(
                     $('#gmail_on_off').toggleClass('on');
                     // désactive l'app et l'API Gmail
                     localStorage.setItem('gmail', 'off');
-                    $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=false");
+                    $.post('http://'+localStorage.getItem('ip')+':3000/gmailStatut', { statut : 'false' });
                 }
                 // active Gmail
                 else{
@@ -46,14 +46,13 @@ define(
                         $('#gmail_on_off').toggleClass('on');
                         // active l'app et l'API Gmail
                         localStorage.setItem('gmail', 'on');
-                        $.get("http://"+localStorage.getItem('ip')+":3000/gmailStatut?statut=true");
+                        $.post('http://'+localStorage.getItem('ip')+':3000/gmailStatut', { statut : 'true' });
                         navigator.notification.vibrate(500);
                         // connexion à la boîte mail
                         var gmailLogin = localStorage.getItem('gmailLogin'),
                             gmailPassword = localStorage.getItem('gmailPassword');
-                        $.post('http://'+localStorage.getItem('ip')+':3000/gmail/',{user:gmailLogin, password:gmailPassword})
+                        $.post('http://'+localStorage.getItem('ip')+':3000/gmail/', { user: gmailLogin, password: gmailPassword })
                         .success(function(data){
-                            //navigator.notification.alert('Identifiants sauvegardés', null, 'Gmail');
                             navigator.notification.vibrate(500);
                          }.bind(this))
                         .error(function(error){
