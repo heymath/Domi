@@ -52,7 +52,11 @@ define(
                             type: "Point",
                             coordinates: [e.latlng.lng, e.latlng.lat]
                         },
-                        properties: { 'marker-color': '#000' }
+                        properties: {
+                            'marker-color': '#000',
+                            title: 'Domi',
+                            description: 'Coucou, je suis là !'
+                        }
                     });
                 });
 
